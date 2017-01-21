@@ -1,7 +1,7 @@
 #include "serveur.h"
 #include <iostream>
 
-Serveur::Serveur(int nombre_max_client,int port){
+Serveur::Serveur(int nombre_max_client,int port):QWidget(){
     serveur=new QTcpServer;
     if(!serveur->listen(QHostAddress::Any,port)){
         std::cout<<"Le serveur n'as pas pu démarer au port "<<port<<"\n Raison:\n";
@@ -58,7 +58,7 @@ void Serveur::deconnectionClient(){
     clients.removeOne(socket);
     socket->deleteLater();
 }
-Serveur::envoyerMessagesATous(){
+void Serveur::envoyerATous(QString const & message){
     // Préparation du paquet
     QByteArray paquet;
     QDataStream out(&paquet, QIODevice::WriteOnly);

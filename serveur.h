@@ -10,8 +10,8 @@ class Serveur : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Serveur(int nombre_max_client,int port);
-    void envoyerMessagesATous();
+    Serveur(int nombre_max_client,int port);
+    void envoyerATous(QString const &message);
 
 signals:
 
